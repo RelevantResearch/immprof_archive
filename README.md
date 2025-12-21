@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Immigration Law News Portal
 
-## Getting Started
+A professional, optimized news portal built with Next.js 16, MongoDB, and TypeScript featuring server-side rendering, category filtering, and full-text search.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- ✅ **Server-Side Rendering (SSR)** - Fast initial page loads with Next.js App Router
+- 🔍 **Full-Text Search** - Search across titles, content, and excerpts
+- 🏷️ **Category Filtering** - Browse posts by category with clean UI
+- 📄 **Pagination** - Efficient browsing of large datasets
+- 🎨 **Professional UI** - Clean, modern design with Tailwind CSS
+- ⚡ **Optimized Database** - MongoDB with proper indexing for performance
+- 📱 **Responsive Design** - Works perfectly on all devices
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Database Status
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+✅ **19,881 blog posts** successfully loaded into MongoDB
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Quick Start
 
-## Learn More
+The application is already set up and running! Just open [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+## API Routes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `GET /api/posts` - Fetch posts with pagination, category filter, and search
+- `GET /api/posts/[basename]` - Get single post by basename  
+- `GET /api/categories` - Get all unique categories
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 16, React 19, TypeScript
+- Tailwind CSS 4
+- MongoDB with Mongoose
