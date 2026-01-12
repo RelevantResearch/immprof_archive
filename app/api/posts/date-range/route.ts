@@ -1,17 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import { PostService } from '@/lib/services/postService';
-import { QueryParser } from '@/lib/utils/queryParser';
 import { ErrorHandler } from '@/lib/utils/errorHandler';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
     try {
         await connectDB();
 
-        const { filters, pagination } = QueryParser.parseRequest(request);
-        const result = await PostService.getPosts(filters, pagination);
+        const dateRange = await PostService.getDateRange();
 
-        return NextResponse.json(result);
+        return NextResponse.json(dateRange);
     } catch (error) {
         const { status, message } = ErrorHandler.handle(error);
         return NextResponse.json({ error: message }, { status });

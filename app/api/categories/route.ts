@@ -1,19 +1,17 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
-import BlogPost from '@/models/BlogPost';
+import { PostService } from '@/lib/services/postService';
+import { ErrorHandler } from '@/lib/utils/errorHandler';
 
 export async function GET() {
     try {
         await connectDB();
 
-        const categories = await BlogPost.distinct('category', { status: 'Publish' });
+        const categories = await PostService.getCategories();
 
-        return NextResponse.json({ categories: categories.sort() });
+        return NextResponse.json({ categories });
     } catch (error) {
-        console.error('Categories fetch error:', error);
-        return NextResponse.json(
-            { error: 'Failed to fetch categories' },
-            { status: 500 }
-        );
+        const { status, message } = ErrorHandler.handle(error);
+        return NextResponse.json({ error: message }, { status });
     }
 }
