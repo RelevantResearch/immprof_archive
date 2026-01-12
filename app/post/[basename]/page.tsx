@@ -117,7 +117,7 @@ export default async function PostPage({ params }: PageProps) {
             >
               ← Back to all articles
             </Link>
-            {post.unique_url && (
+            {/* {post.unique_url && (
               <a
                 href={post.unique_url}
                 target="_blank"
@@ -126,7 +126,7 @@ export default async function PostPage({ params }: PageProps) {
               >
                 View original →
               </a>
-            )}
+            )} */}
           </div>
         </footer>
       </article>

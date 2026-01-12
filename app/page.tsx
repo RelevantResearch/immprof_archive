@@ -122,7 +122,7 @@ export default function HomePage() {
               placeholder="Search articles..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
             />
             <button
               type="submit"
@@ -225,11 +225,11 @@ export default function HomePage() {
               <button
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-gray-900 bg-white"
               >
                 Previous
               </button>
-              <span className="px-4 py-2 text-gray-700">
+              <span className="px-4 py-2 text-gray-900 font-medium">
                 Page {currentPage} of {pagination.totalPages}
               </span>
               <button
@@ -237,7 +237,7 @@ export default function HomePage() {
                   setCurrentPage((p) => Math.min(pagination.totalPages, p + 1))
                 }
                 disabled={currentPage === pagination.totalPages}
-                className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-gray-900 bg-white"
               >
                 Next
               </button>
