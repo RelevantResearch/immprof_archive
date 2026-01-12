@@ -16,7 +16,7 @@ export interface IBlogPost {
     extended_body: string;
     excerpt: string;
     keywords: string;
-    date_parsed: Date;
+    date_parsed: string; // Stored as ISO string in MongoDB
 }
 
 const BlogPostSchema = new Schema<IBlogPost>(
@@ -36,7 +36,7 @@ const BlogPostSchema = new Schema<IBlogPost>(
         extended_body: { type: String, default: '' },
         excerpt: { type: String, default: '' },
         keywords: { type: String, default: '' },
-        date_parsed: { type: Date, required: true, index: true },
+        date_parsed: { type: String, required: true, index: true }, // Stored as ISO string
     },
     {
         timestamps: true,

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
-import BlogPost from '@/models/BlogPost';
+import { PostService } from '@/lib/services/postService';
+import { ErrorHandler } from '@/lib/utils/errorHandler';
 
 export async function GET(
     request: NextRequest,
@@ -10,7 +11,7 @@ export async function GET(
         await connectDB();
         const { basename } = await params;
 
-        const post = await BlogPost.findOne({ basename, status: 'Publish' }).lean();
+        const post = await PostService.getPostByBasename(basename);
 
         if (!post) {
             return NextResponse.json(
@@ -21,10 +22,7 @@ export async function GET(
 
         return NextResponse.json({ post });
     } catch (error) {
-        console.error('Post fetch error:', error);
-        return NextResponse.json(
-            { error: 'Failed to fetch post' },
-            { status: 500 }
-        );
+        const { status, message } = ErrorHandler.handle(error);
+        return NextResponse.json({ error: message }, { status });
     }
 }
