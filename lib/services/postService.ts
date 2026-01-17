@@ -131,7 +131,7 @@ export class PostService {
     /**
      * Get date range of published posts
      */
-    static async getDateRange(): Promise<{ minDate: Date | null; maxDate: Date | null }> {
+    static async getDateRange(): Promise<{ minDate: string | null; maxDate: string | null }> {
         const [minPost, maxPost] = await Promise.all([
             BlogPost.findOne({ status: 'Publish' })
                 .sort({ date_parsed: 1 })
